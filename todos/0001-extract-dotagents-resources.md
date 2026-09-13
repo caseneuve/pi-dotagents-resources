@@ -7,7 +7,7 @@ labels: [pi, packaging]
 created: 2026-09-13
 parent: null
 blocked-by: []
-blocks: []
+blocks: [0002]
 ---
 
 ## Context
