@@ -1,0 +1,15 @@
+# Changes to this file will be overwritten by Copier updates.
+# Review it with the template source before running `copier update`.
+_commit: 179a05d
+_src_path: /home/piotr/git/copier/template-pi-package
+copyright_year: 2026
+github_owner: caseneuve
+initial_version: 0.0.0
+package_description: Themes and reusable prompt templates for Pi.
+package_name: pi-dotagents-resources
+prompt_name: ans
+repository_name: pi-dotagents-resources
+resource_types:
+- prompts
+- themes
+theme_name: modus-operandi
