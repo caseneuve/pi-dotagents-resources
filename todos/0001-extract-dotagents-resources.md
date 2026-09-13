@@ -1,6 +1,6 @@
 ---
 title: extract dotagents resources
-status: open
+status: in_progress
 priority: medium
 type: chore
 labels: [pi, packaging]
