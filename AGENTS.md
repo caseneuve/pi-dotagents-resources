@@ -8,7 +8,7 @@ This repository contains a public Pi package for [pi-coding-agent](https://pi.de
 2. Create or update a todo with concrete acceptance criteria. Record important design decisions and departures from the original plan in that todo.
 3. Create a task branch; keep `master` stable.
 4. Develop with checkpoint commits. Prefer red → green → refactor when testable.
-5. Run checks, type checking, tests, coverage, package validation, and installation checks.
+5. Validate resource frontmatter, theme JSON, package contents, and installation behavior.
 6. Request peer review against the todo and this file.
 7. Address findings in new commits, then merge only after approval.
 
@@ -16,21 +16,21 @@ Do not redesign behavior or expand platform support without an explicit todo.
 
 ## Tooling
 
-- In a newly generated checkout, run `git init -b master && npm install` once and commit the resulting `package-lock.json`. Thereafter use npm and the committed lockfile: `npm ci` for clean installs.
-- Biome owns TypeScript formatting and baseline linting. Use 2-space indentation; do not add Prettier or ESLint.
-- `npm run check` may write safe Biome fixes. `npm run check:ci` must not modify files.
-- Prek installs through a guarded `prepare` script during development and runs the mutating Biome check before commits. Production-only Pi Git installs skip hook installation.
-- `npm run typecheck` verifies the pinned development Pi API surface.
-- Use Vitest for tests and V8 coverage for extension code.
+This is a resource-only package: it has no extensions, runtime dependencies,
+build step, formatter, linter, typecheck, or test harness. Do not add one
+without a concrete resource-format requirement.
+
+Validate changed prompt frontmatter and theme JSON directly, inspect
+`npm pack --dry-run --json`, and test Pi installation/filtering in an isolated
+configuration.
 
 ## Engineering discipline
 
-- Prefer TDD. If automated testing is impractical, document focused manual testing.
+- Use focused manual validation for resource-format changes; add automated checks only when a concrete resource-format regression warrants them.
 - Use FCIS: isolate pure planning, parsing, transformation, and formatting from filesystem, process, network, and UI side effects.
 - Design with precise TypeScript types.
 - Apply KISS, DRY, and YAGNI.
 - Preserve public commands, tools, shortcuts, resource paths, settings, and platform limitations unless an approved todo changes them.
-- Keep imported Pi APIs in `peerDependencies` with a `"*"` range and pin them in `devDependencies` for type checking. Keep non-Pi runtime imports in `dependencies`.
 - Keep the `pi` manifest explicit. Package filtering must be documented and experimental resources must be manifest-excluded.
 
 ## Release procedure
@@ -48,9 +48,9 @@ Use npm-compatible CalVer `YYYY.M.D[.PATCH]`; release tags are annotated `v<vers
 Reviewers must check:
 
 - Conformance to the todo and acceptance criteria.
-- Test coverage and manual-test evidence where appropriate.
+- Focused manual validation evidence.
 - Manifest/resource paths, filtering, local installation, and immutable Git installation.
-- Pi API compatibility, peer/runtime dependency placement, and package contents from `npm pack --dry-run`.
+- Pi resource-format compatibility and package contents from `npm pack --dry-run`.
 - FCIS, modularity, KISS, DRY, and YAGNI discipline.
 - Preservation of public behavior and documented platform limits.
 - For visible UI changes, screenshot review unless a human explicitly waives it.

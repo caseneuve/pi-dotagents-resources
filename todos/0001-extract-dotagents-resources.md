@@ -28,8 +28,11 @@ pi-agent-channel todo `0003`.
   prompt/theme discovery, theme identities, and individual filtering paths.
 - [x] Document local and immutable Git installation, filtering, and the fact
   that active-theme selection is downstream configuration.
-- [x] Run formatting, typecheck, tests, Oxlint, `npm pack --dry-run --json`, and
-  isolated local-install/filter validation.
+- [x] Run direct prompt-frontmatter/theme-JSON validation,
+  `npm pack --dry-run --json`, and isolated local-install/filter validation.
+- [x] Remove the generated Node development toolchain; this resource-only
+  package has no extensions, dependencies, build step, formatter, linter,
+  typecheck, or test harness.
 - [x] Record a release-blocking human audit for every included prompt; do not
   publish, tag, remove sources, or change dotagents settings in this task.
 - [ ] After the human audit supplies a reviewed immutable ref, validate its Git
@@ -41,7 +44,6 @@ pi-agent-channel todo `0003`.
 - `themes/` — literal theme source files.
 - `package.json` — resource manifest and package metadata.
 - `README.md` — package installation and filtering instructions.
-- `test/package.test.ts` — manifest, resource identity, and discovery checks.
 
 ## Notes
 
@@ -49,7 +51,7 @@ pi-agent-channel todo `0003`.
   this package does not select a default theme.
 - Preserve `0.0.0` until the first reviewed release sets CalVer.
 - Human prompt audit is a release blocker.
-- Validation passed on 2026-09-13: `npm run check:ci`, `npm run typecheck`,
-  `npm test`, `npx --yes oxlint@1.82.0 .`, and `npm run pack:check`; a temporary
-  `HOME` confirmed `pi install ~/git/pi/pi-dotagents-resources` and independent
+- Initial template validation used its generated Node toolchain. It was removed
+  because it does not serve this resource-only package. A temporary `HOME`
+  confirmed `pi install ~/git/pi/pi-dotagents-resources` and independent
   `prompts/ans.md` / `themes/modus-vivendi.json` filtering.

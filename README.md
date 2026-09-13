@@ -70,18 +70,13 @@ enable or disable individual resources.
 
 ## Development
 
+No dependencies or build step are required. Validate the package contents with:
+
 ```bash
-npm ci
-npm run check:ci
-npm run typecheck
-npm test
-npx --yes oxlint@1.82.0 .
-npm run pack:check
+npm pack --dry-run --json
 ```
 
-`npm install` runs `prepare`, which installs the [Prek](https://github.com/j178/prek)
-hook when the development dependency is present. Production-only Pi Git
-installs skip hook installation safely.
+Check prompt frontmatter and both theme JSON files when changing resources.
 
 ## Release gate
 
