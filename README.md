@@ -1,13 +1,26 @@
 # pi-dotagents-resources
 
-Themes and reusable prompt templates for Pi.
-
-This is a package for [Pi](https://pi.dev/), the [`@earendil-works/pi-coding-agent`](https://www.npmjs.com/package/@earendil-works/pi-coding-agent).
+Themes and reusable prompt templates for [Pi](https://pi.dev/), the
+[`@earendil-works/pi-coding-agent`](https://www.npmjs.com/package/@earendil-works/pi-coding-agent).
 
 ## Resources
 
-- Prompt template directory: `prompts/`
-- Theme directory: `themes/`
+### Prompt templates
+
+- `/ans` — answer a question in read-only mode.
+- `/be-concise` — use a concise-reply protocol.
+- `/handoff` — write a persistent Markdown handoff.
+- `/speak-human` — use concise, one-topic-at-a-time conversation.
+- `/style` — suggest simpler, human-friendly prose edits.
+
+### Themes
+
+- `modus-operandi` — light theme.
+- `modus-vivendi` — dark theme.
+
+The themes retain their existing identities. A downstream Pi configuration may
+select them as a light/dark pair with `"theme": "modus-operandi/modus-vivendi"`.
+This package does not select an active theme.
 
 ## Install
 
@@ -23,65 +36,59 @@ Install a reviewed immutable release in normal use:
 pi install git:github.com/caseneuve/pi-dotagents-resources@<reviewed-tag-or-commit-sha>
 ```
 
-Use an annotated release tag such as `v2026.7.10`, or a reviewed commit SHA. Do not use a moving branch name for a reproducible installation.
+Use an annotated release tag or a reviewed commit SHA. Do not use a moving
+branch name for a reproducible installation.
 
-Pi filters package resources through an object entry in `packages` settings. Omit a resource key to load everything of that type; use an empty array to disable it. For example:
+Pi filters package resources through an object entry in `packages` settings.
+For example, load only `/ans`:
+
+```json
+{
+  "packages": [{
+    "source": "git:github.com/caseneuve/pi-dotagents-resources@<reviewed-tag-or-commit-sha>",
+    "prompts": ["prompts/ans.md"],
+    "themes": []
+  }]
+}
+```
+
+Or load only the dark theme:
 
 ```json
 {
   "packages": [{
     "source": "git:github.com/caseneuve/pi-dotagents-resources@<reviewed-tag-or-commit-sha>",
     "prompts": [],
-    "themes": []
+    "themes": ["themes/modus-vivendi.json"]
   }]
 }
 ```
 
-Use `pi config` (or `pi config -l` for project settings) to enable or disable individual resources.
+Omit a resource key to load every resource of that type; use an empty array to
+disable that type. Use `pi config` (or `pi config -l` for project settings) to
+enable or disable individual resources.
 
 ## Development
 
-For a new local checkout, initialize Git and create the committed lockfile once:
-
-```bash
-git init -b master
-npm install
-```
-
-Commit the resulting lockfile:
-
-```bash
-git add package-lock.json
-```
-
-After the lockfile is committed, use clean installs:
-
 ```bash
 npm ci
-npm run verify
-npm run test:coverage
+npm run check:ci
+npm run typecheck
+npm test
+npx --yes oxlint@1.82.0 .
 npm run pack:check
 ```
 
-`npm install` runs `prepare`, which installs the [Prek](https://github.com/j178/prek) hook when the development dependency is present. Production-only Pi Git installs skip hook installation safely. The hook runs Biome and may apply safe formatting fixes. Review and stage any hook changes before committing again.
+`npm install` runs `prepare`, which installs the [Prek](https://github.com/j178/prek)
+hook when the development dependency is present. Production-only Pi Git
+installs skip hook installation safely.
 
-Run all hooks explicitly with:
+## Release gate
 
-```bash
-npx prek run --all-files
-```
-
-`npm run check` applies Biome formatting/lint fixes. `npm run check:ci` is the non-mutating CI equivalent.
-
-## Releases
-
-This project uses npm-compatible CalVer: `YYYY.M.D[.PATCH]` (for example, `2026.7.10` or `2026.7.10.1`). Before a release:
-
-1. Run `npm run verify`, `npm run test:coverage`, and `npm run pack:check`.
-2. Update `CHANGELOG.md` and `package.json` with the release version.
-3. Merge approved work to `master`.
-4. Create an annotated tag named `v<version>`.
-5. Verify `pi install git:github.com/caseneuve/pi-dotagents-resources@v<version>` in an isolated Pi configuration.
+A human audit of every prompt is required before the first release. Record each
+prompt's keep/revise/rename/drop decision, command and argument semantics,
+dependencies, applicability, overlap, and validation before publishing or
+tagging.
 
 ## License
 
