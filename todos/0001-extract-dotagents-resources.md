@@ -22,16 +22,18 @@ pi-agent-channel todo `0003`.
 
 ## Acceptance Criteria
 
-- [ ] Preserve the five independent prompt templates and both themes literally
+- [x] Preserve the five independent prompt templates and both themes literally
   during the initial move.
-- [ ] Expose only those resources through the explicit `pi` manifest and verify
+- [x] Expose only those resources through the explicit `pi` manifest and verify
   prompt/theme discovery, theme identities, and individual filtering paths.
-- [ ] Document local and immutable Git installation, filtering, and the fact
+- [x] Document local and immutable Git installation, filtering, and the fact
   that active-theme selection is downstream configuration.
-- [ ] Run formatting, typecheck, tests, Oxlint, `npm pack --dry-run --json`, and
+- [x] Run formatting, typecheck, tests, Oxlint, `npm pack --dry-run --json`, and
   isolated local-install/filter validation.
-- [ ] Record a release-blocking human audit for every included prompt; do not
+- [x] Record a release-blocking human audit for every included prompt; do not
   publish, tag, remove sources, or change dotagents settings in this task.
+- [ ] After the human audit supplies a reviewed immutable ref, validate its Git
+  installation in an isolated Pi configuration.
 
 ## Affected Files
 
@@ -47,3 +49,7 @@ pi-agent-channel todo `0003`.
   this package does not select a default theme.
 - Preserve `0.0.0` until the first reviewed release sets CalVer.
 - Human prompt audit is a release blocker.
+- Validation passed on 2026-09-13: `npm run check:ci`, `npm run typecheck`,
+  `npm test`, `npx --yes oxlint@1.82.0 .`, and `npm run pack:check`; a temporary
+  `HOME` confirmed `pi install ~/git/pi/pi-dotagents-resources` and independent
+  `prompts/ans.md` / `themes/modus-vivendi.json` filtering.
