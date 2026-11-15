@@ -10,6 +10,15 @@ blocked-by: []
 blocks: [0002]
 ---
 
+## Superseding scope (2026-11-15)
+
+Todo `0003` narrows this package to themes only. The independent prompts remain
+canonical in dotagents, not dormant retirement material. The initial extraction
+checks below are historical. Prompt audit `0002` is not completed, but no longer
+blocks this theme-only package. Immutable Git installation remains a separate
+validation gate, not dependent on a package prompt audit. No publication, tag,
+push, merge, or dotagents changes are authorized by `0003`.
+
 ## Context
 
 Extract the resource-only Pi package from dotagents source todo `0027.8` using
@@ -50,7 +59,8 @@ pi-agent-channel todo `0003`.
 - `modus-operandi`/`modus-vivendi` remain the established light/dark pair, but
   this package does not select a default theme.
 - Preserve `0.0.0` until the first reviewed release sets CalVer.
-- Human prompt audit is a release blocker.
+- Historical prompt gate: superseded for the theme-only package by `0003`;
+  independent prompt audit remains outstanding with the canonical owner.
 - Initial template validation used its generated Node toolchain. It was removed
   because it does not serve this resource-only package. A temporary `HOME`
   confirmed `pi install ~/git/pi/pi-dotagents-resources` and independent

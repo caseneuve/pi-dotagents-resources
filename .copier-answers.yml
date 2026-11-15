@@ -1,13 +1,17 @@
-# Changes to this file will be overwritten by Copier updates.
-# Review it with the template source before running `copier update`.
-_commit: v0.2.0
-_src_path: git@github.com:caseneuve/template-pi-package.git
+# Historical generation provenance, not the manually adopted baseline.
+# Original generation used this local template revision. No Copier update was run.
+# User's later remote v0.2.0 rewrite is preserved in commit 01d8791.
+# Manual theme-only/package-doc changes follow local, unpushed baseline
+# 08350707812e7036ab9477e879c1b029febd552b; this is not a remote update ref.
+# Review README and downstream ownership before any future Copier update.
+_commit: 179a05d
+_src_path: /home/piotr/git/copier/template-pi-package
 copyright_year: 2026
 github_owner: caseneuve
 initial_version: 0.0.0
 package_description: Themes and reusable prompt templates for Pi.
 package_name: pi-dotagents-resources
-prompt_name: speak-human
+prompt_name: ans
 repository_name: pi-dotagents-resources
 resource_types:
 - prompts

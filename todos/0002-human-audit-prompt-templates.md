@@ -3,12 +3,21 @@ title: human audit all prompt templates before first release
 status: open
 priority: high
 type: chore
-labels: [release-blocker]
+labels: [prompt-audit]
 created: 2026-09-13
 parent: null
 blocked-by: []
 blocks: []
 ---
+
+## Scope clarification (2026-11-15)
+
+This audit is **not completed**. Todo `0003` removes the byte-identical package
+prompt duplicates, leaving canonical independent prompts in dotagents. This
+historical prompt audit no longer gates a theme-only package release. The
+criteria below remain an outstanding prompt-owner review record, not authority
+to edit dotagents or to publish/tag this package. The removed Node test harness
+is not to be restored for this audit.
 
 ## Context
 
@@ -37,5 +46,5 @@ this package and are tracked by pi-agent-channel todo `0003`.
 
 ## Notes
 
-This todo is a release blocker, not authorization to change dotagents bootstrap
-settings or remove dormant dotagents source files.
+This historical prompt gate does not block the retained theme-only package and
+does not authorize dotagents changes. No prompt-audit completion is claimed.

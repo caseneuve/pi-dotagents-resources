@@ -1,29 +1,25 @@
 {
   "name": "pi-dotagents-resources",
   "version": "0.0.0",
-  "description": "Themes and reusable prompt templates for Pi.",
+  "description": "Modus Operandi and Modus Vivendi themes for Pi.",
   "type": "module",
   "license": "MIT",
   "copyright": "Copyright (c) 2026 Caseneuve",
   "keywords": [
     "pi-package",
     "pi",
-    "agents",
-    "prompts",
     "themes"
   ],
   "files": [
     "README.md",
     "LICENSE",
     "CHANGELOG.md",
-    "prompts",
-    "themes"
+    "themes/modus-operandi.json",
+    "themes/modus-vivendi.json"
   ],
   "pi": {
-    "prompts": ["./prompts"],
-    "themes": ["./themes"]
+    "themes": ["./themes/modus-operandi.json", "./themes/modus-vivendi.json"]
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/caseneuve/pi-dotagents-resources.git"
