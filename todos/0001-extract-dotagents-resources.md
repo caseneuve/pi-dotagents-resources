@@ -1,13 +1,13 @@
 ---
 title: extract dotagents resources
-status: in_progress
+status: closed
 priority: medium
 type: chore
 labels: [pi, packaging]
 created: 2026-09-13
 parent: null
 blocked-by: []
-blocks: [0002]
+blocks: []
 ---
 
 ## Superseding scope (2026-11-15)
@@ -65,3 +65,21 @@ pi-agent-channel todo `0003`.
   because it does not serve this resource-only package. A temporary `HOME`
   confirmed `pi install ~/git/pi/pi-dotagents-resources` and independent
   `prompts/ans.md` / `themes/modus-vivendi.json` filtering.
+
+## Reconciliation (2026-11-15)
+
+Closed as superseded mixed-resource scope, not as a completed human prompt audit.
+Done `0003` and reviewed theme-only master `a8c5500d437e03e162d6b1df0e3a8886a8bb66c6`
+(approved `e6612e9`) replace this package's original prompt/theme ownership contract.
+The initial prompt copies were preserved and compared before removal; independent
+prompts remain canonical in dotagents, not retirement material.
+
+Both theme identities, strict schema/parser, six-file pack, native local/project
+trust/filter/reload/restart and immutable native local-Git installation are independently
+approved in `~/.cache/pi-migration/evidence/themes/{review,README}.md`. The user has
+manually accepted the retained package, as reported by lead t16. The old prompt-audit
+prerequisite no longer gates theme validation, so the obsolete `blocks: [0002]` edge
+is removed. Todo `0002` remains OPEN and unfulfilled; its file and historical audit
+criteria are untouched. The unchecked audit-dependent condition above is superseded,
+not marked performed. Public remote availability, publication and source retirement
+remain separate gates; no remote GitHub installation is claimed.
