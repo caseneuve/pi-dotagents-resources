@@ -2,6 +2,7 @@
   "name": "pi-dotagents-resources",
   "version": "0.0.0",
   "description": "Themes and reusable prompt templates for Pi.",
+  "type": "module",
   "license": "MIT",
   "copyright": "Copyright (c) 2026 Caseneuve",
   "keywords": [
@@ -22,6 +23,7 @@
     "prompts": ["./prompts"],
     "themes": ["./themes"]
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/caseneuve/pi-dotagents-resources.git"
