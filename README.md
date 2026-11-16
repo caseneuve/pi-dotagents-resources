@@ -72,7 +72,7 @@ duplicate names cause resource-collision diagnostics.
 ## Prompt ownership
 
 The five independent prompts (`ans`, `be-concise`, `handoff`, `speak-human`,
-`style`) remain canonical in **dotagents**, under `pi/prompts`. Their package
+`style`) remain canonical in **dotagents**, under `prompts/`. Their package
 copies were removed only after byte-equality verification; their history remains
 in Git. No dotagents files or settings were changed here.
 
@@ -95,14 +95,18 @@ Pi, and inspect screenshots. Do not add a Node toolchain or CI for JSON resource
 `.pi/docs/` notes may be tracked. Git ignore and npm's exact `files` allowlist
 are separate policies.
 
-`.copier-answers.yml` preserves the original generation source: local
-`/home/piotr/git/copier/template-pi-package` at `179a05d`. A preexisting user
-rewrite to remote `v0.2.0` was checkpointed separately in `01d8791`; it was not
+`.copier-answers.yml` retains the original generation revision `179a05d` and
+uses `https://github.com/caseneuve/template-pi-package.git` instead of a
+machine-specific checkout path. Generation originally used a local checkout;
+changing the source reference does not run Copier or apply an update. The template
+repository is private: access is required for template operations, not for using
+this Pi theme package. A preexisting user rewrite to remote `v0.2.0` was
+checkpointed separately in `01d8791`; it was not
 proof of an applied update. This tranche **manually** adopts the relevant
 resource-only, native-install and local-state-ignore conventions reviewed at
 local/unpushed template baseline `08350707812e7036ab9477e879c1b029febd552b`,
-plus the reviewed ignored-parent correction (`!/.pi/`). No Copier update or
-remote-ref migration was performed. Generation answers describe the historical
+plus the reviewed ignored-parent correction (`!/.pi/`). No Copier update was run
+and the generation revision was not changed. Generation answers describe the historical
 scaffold, not the current resource inventory. Review source availability and
 repository-owned files before any future Copier operation.
 
